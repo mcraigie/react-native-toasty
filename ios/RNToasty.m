@@ -27,7 +27,7 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     
     NSString *position = [props objectForKey: @"position"];
     NSNumber *offsetY = [props objectForKey: @"offsetY"];
-    NSValue exactToastPosition = nil;
+    NSValue *exactToastPosition = nil;
 
     NSNumber *hidePrevious = [props objectForKey: @"hidePrevious"];
     
@@ -53,7 +53,7 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     }
     if (offsetY != nil) {
         CGRect bounds = [UIScreen mainScreen].bounds;
-        exactToastPosition = [NSValue valueWithCGPoint:CGPointMake(bounds.size.width / 2.0, offsetY.intValue)]
+        exactToastPosition = [NSValue valueWithCGPoint:CGPointMake(bounds.size.width / 2.0, offsetY.intValue)];
     }
 
     const NSString *toastPosition = [self getPosition: position];
