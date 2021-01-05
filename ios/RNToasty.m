@@ -26,6 +26,8 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     UIImage *drawable = nil;
     
     NSString *position = [props objectForKey: @"position"];
+
+    NSNumber *hidePrevious = [props objectForKey: @"hidePrevious"];
     
     CSToastStyle *style = [[CSToastStyle alloc] initWithDefaultStyle];
     
@@ -49,7 +51,10 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     
     UIWindow *window = [[UIApplication sharedApplication] keyWindow];
 
-    // toast with all possible options
+    if ([hidePrevious intValue] == 1) {
+        [window hideAllToasts];
+    }
+
     [window
      makeToast: title
      duration: 3.0

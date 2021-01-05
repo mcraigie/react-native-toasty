@@ -26,6 +26,8 @@ class Toasty extends PureComponent {
     position: PropTypes.string,
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
+
+    hidePrevious: PropTypes.bool,
   }
 
   static defaultProps = {
@@ -43,6 +45,8 @@ class Toasty extends PureComponent {
     position: 'bottom',
     offsetX: 0,
     offsetY: 50,
+
+    hidePrevious: true,
   }
 
   static Duration = {
@@ -87,6 +91,9 @@ class Toasty extends PureComponent {
     } else {
       props.icon = undefined
     }
+
+    if (props.hidePrevious === undefined)
+      props.hidePrevious = Toasty.defaultProps.hidePrevious
 
     if (props.position === undefined)
       props.position = Toasty.defaultProps.position
