@@ -26,6 +26,7 @@ class Toasty extends PureComponent {
     position: PropTypes.string,
     offsetX: PropTypes.number,
     offsetY: PropTypes.number,
+    manualOffsetY: PropTypes.number,
 
     hidePrevious: PropTypes.bool,
   }
@@ -45,6 +46,7 @@ class Toasty extends PureComponent {
     position: 'bottom',
     offsetX: 0,
     offsetY: 50,
+    manualOffsetY: 0,
 
     hidePrevious: true,
   }
@@ -101,6 +103,8 @@ class Toasty extends PureComponent {
     if (props.offsetX === undefined) props.offsetX = Toasty.defaultProps.offsetX
 
     if (props.offsetY === undefined) props.offsetY = Toasty.defaultProps.offsetY
+
+    if (props.manualOffsetY === undefined) props.manualOffsetY = Toasty.defaultProps.manualOffsetY
 
     RNToasty.Show(props)
   }

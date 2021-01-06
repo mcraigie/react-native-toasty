@@ -26,8 +26,8 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     UIImage *drawable = nil;
     
     NSString *position = [props objectForKey: @"position"];
-    NSNumber *offsetY = [props objectForKey: @"offsetY"];
-    NSValue *exactToastPosition = nil;
+    NSNumber *manualOffsetY = [props objectForKey: @"manualOffsetY"];
+    NSValue *manualToastPosition = nil;
 
     NSNumber *hidePrevious = [props objectForKey: @"hidePrevious"];
     
@@ -51,9 +51,9 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     if (duration != nil) {
         duration = duration.intValue == 0 ? [NSNumber numberWithFloat:1.0] : [NSNumber numberWithFloat:3.0];
     }
-    if (offsetY != nil) {
+    if (manualOffsetY.intValue != 0) {
         CGRect bounds = [UIScreen mainScreen].bounds;
-        exactToastPosition = [NSValue valueWithCGPoint:CGPointMake(bounds.size.width / 2.0, offsetY.intValue)];
+        manualToastPosition = [NSValue valueWithCGPoint:CGPointMake(bounds.size.width / 2.0, manualOffsetY.intValue)];
     }
 
     const NSString *toastPosition = [self getPosition: position];
@@ -67,7 +67,7 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
     [window
      makeToast: title
      duration: duration.floatValue
-     position: exactToastPosition != nil ? exactToastPosition : toastPosition
+     position: manualToastPosition != nil ? manualToastPosition : toastPosition
      title: nil
      image: drawable
      style: style
