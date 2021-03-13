@@ -72,11 +72,11 @@ RCT_EXPORT_METHOD(Show:(NSDictionary *)props) {
      image: drawable
      style: style
      completion:^(BOOL didTap) {
-      if (didTap) {
-          NSLog(@"completion from tap");
-      } else {
-          NSLog(@"completion without tap");
-      }
+    //   if (didTap) {
+    //       NSLog(@"completion from tap");
+    //   } else {
+    //       NSLog(@"completion without tap");
+    //   }
     }];
 }
 
